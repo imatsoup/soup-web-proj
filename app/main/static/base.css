@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+    color: white;
+    flex: 1;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.container-fluid{
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%
+}

@@ -1,0 +1,21 @@
+.center{
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    color: aquamarine;
+}
+.blog{
+    box-sizing: border-box;
+    border: 0.5px solid blue;
+    text-align: center;
+}
+textarea{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    align-self: center;
+    background-color: gray;
+    border: 3px solid green;
+}

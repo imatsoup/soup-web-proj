@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block title %}
+Soup Site || Account Creation Page
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css')}}">
+
+<h1>Create Account</h1>
+
+<form action="#" method="post">
+        <p><input type="text" name="nm" placeholder="Username"></p>
+        <p><input type="text" name="pw" placeholder="Password"></p>
+        <p><input type="email" name="email" placeholder="Email Address"></p>
+        <p><input type="submit" value="Create"></p>
+</form>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}

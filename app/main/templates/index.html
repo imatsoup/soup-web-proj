@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Soup Site || Home Page
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
+<h1 class="center">Home Page</h1>
+
+{%if session.user %}
+    <p class="center"> Welcome {{session.user}}</p>
+{% endif %}
+
+<article class="blog">
+    <p>{{text}}</p>
+</article>
+{%if session.user %}
+{%if session.user == 'admin' %}
+<form action="#", method="post">
+    <p><input type="text" name="text" id="" placeholder="Edit this..."></p>
+    <p><input type="submit" value="edit"></p>
+</form>
+{% endif %}
+{% endif %}
+
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{% endblock %}
