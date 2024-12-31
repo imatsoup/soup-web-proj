@@ -32,6 +32,10 @@ def test():
 @app.route('/home', methods=['POST', 'GET'])
 def home():
     # IF METHOD POST, WRITE TO FILE, then do the rest and display our new text
+    if request.method == 'POST':
+        blog = request.form['text_box']
+        with open('text.txt', 'w') as f:
+            f.write(blog)
     filepath= Path('text.txt')
     text = 'Default'
     if filepath.is_file():
