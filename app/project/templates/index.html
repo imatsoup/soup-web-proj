@@ -3,9 +3,11 @@
 {% block title %}
 Soup Site || Home Page
 {% endblock %}
-
-{% block content %}
+{% block css %} 
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+
 <h1 class="center">Home Page</h1>
 
 {%if session.user %}
