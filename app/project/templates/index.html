@@ -15,7 +15,9 @@ Soup Site || Home Page
 {% endif %}
 
 <article class="blog">
-    <p>{{text}}</p>
+    {% for entry in list %}
+        <p>{{entry}}</p>
+    {% endfor %}
 </article>
 {%if session.user %}
 {%if session.user == 'admin' %}

@@ -16,5 +16,6 @@ def create_app(database_uri=''):
         db.create_all()
         
     app.register_blueprint(main)
+    
     return app
     

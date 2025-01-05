@@ -1,5 +1,6 @@
 from flask import render_template, url_for, request, redirect, session, flash, Blueprint
 import bcrypt
+from .blog import blog_read, blog_write
 from pathlib import Path
 
 from .extensions import db
@@ -7,26 +8,22 @@ from .models import users
 
 main = Blueprint("main", __name__)
 
-@main.route('/')
+@main.route('/test')
 def test():
     return '<h1>Test</h1>'
 
+@main.route('/', methods=['POST', 'GET'])
 @main.route('/home', methods=['POST', 'GET'])
 def home():
-    # IF METHOD POST, WRITE TO FILE, then do the rest and display our new text
-    filepath= Path('text.txt')
+    # IF METHOD POST, WRITE TO db
     
     if request.method == 'POST':
-        blog = request.form['text_box']
-        with open(filepath, 'w') as f:
-            f.write(blog)
-    
-    text = 'Default'
-    if filepath.is_file():
-        with open(filepath, 'r') as f:
-            text = f.read();
+        blog_edit = request.form['text_box']
+        blog_write(blog_edit)
 
-    return render_template('index.html', text = text)
+    list = blog_read()
+
+    return render_template('index.html', list = list)
 @main.route('/create', methods=['POST', 'GET'])
 def create():
     if request.method == 'POST':
