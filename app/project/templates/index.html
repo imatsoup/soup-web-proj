@@ -16,14 +16,17 @@ Soup Site || Home Page
 
 <article class="blog">
     {% for entry in list %}
-        <p>{{entry}}</p>
+        <h2 class = "blog_title"> {{ entry.title }} - {{ entry.date.date() }}</h2>
+        <p class = "blog_content"> {{ entry.content }} </p>
     {% endfor %}
 </article>
+
 {%if session.user %}
 {%if session.user == 'admin' %}
 <form action="#", method="post">
-    <p><input type="text" name="text_box" id="" placeholder="Edit this..."></p>
-    <p><input type="submit" value="edit"></p>
+    <p><input type="text" name="edit_blog_title" id="" placeholder="Title Goes Here"></p>
+    <p><input type="text" name="edit_blog_content" id="" placeholder="Blog Content goes here"></p>
+    <p><input type="submit" value="edit" class="submit"></p>
 </form>
 {% endif %}
 {% endif %}

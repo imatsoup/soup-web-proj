@@ -16,16 +16,18 @@ def test():
 @main.route('/home', methods=['POST', 'GET'])
 def home():
     # IF METHOD POST, WRITE TO db
-    
     if request.method == 'POST':
-        blog_edit = request.form['text_box']
-        blog_write(blog_edit)
+        blog_title = request.form['edit_blog_title']
+        blog_con = request.form['edit_blog_content']
+        blog_write(blog_title, blog_con)
 
     list = blog_read()
 
     return render_template('index.html', list = list)
+
 @main.route('/create', methods=['POST', 'GET'])
 def create():
+    #IF METHOD POST, try to create account
     if request.method == 'POST':
         session.permanent = True
         uname = request.form['nm']
@@ -49,9 +51,12 @@ def create():
             flash('Account created!')
             return redirect(url_for('main.login'))
     else:
+        session['user'] = None
         return render_template('create.html')
+    
 @main.route('/login', methods=['POST', 'GET'])
 def login():
+    #IF METHOD POST, try to login
         if request.method == 'POST':       
             uname = request.form['nm']
             pw = request.form['pw']
@@ -59,15 +64,23 @@ def login():
             if found_user and bcrypt.checkpw(pw.encode(), found_user.pw):
                 session.permanent = True
                 session['user'] = uname
-                flash('Identity confirmed', 'info')
                 return redirect(url_for('main.home'))
             else: 
                 flash('Your information was incorrect!', 'info')
                 return redirect(url_for('main.login'))
         else:
+            session['user'] = None
             return render_template('login.html')
+        
+@main.route('/rickroll')
+def rickroll():
+    #Just a funny joke
+    return '<style>body{background-image: url("static/rickroll.gif");}</style>'
+
 @main.route('/logout')
 def logout():
+    #If we hit this route, clear session vars
     flash('You have been logged out!', 'info')
     session.pop('user', None)
     return redirect(url_for('main.login'))
+

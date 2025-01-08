@@ -12,8 +12,44 @@ body{
     flex-direction: column;
     
 }
+img{
+    height:25px;
+    width:25px;
+}
+.bg-light {
+    background-color: #B1DDF1 !important;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+  }
+.navbar-light .navbar-nav .nav-link{
+    color: rgba(0,0,0,.9);
+}
+.navbar-brand{
+    pointer-events: none;
+}
 .container-fluid{
     margin: 0 auto;
     max-width: 100%;
     width: 100%
 }
+
+
+
+/* Sliding background css I saw online that I wanted to save for later */
+/* .container{
+    overflow: hidden
+}
+.slidingbackground{
+    background: url("rickroll.gif") repeat-x;
+    height: 500px;
+    width: 5076px;
+    animation: slide 60s linear infinite;
+} */
+@keyframes slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-1692px, 0, 0); /* The image width */
+    }
+  }

@@ -15,8 +15,10 @@ class users(db.Model):
 class blogposts(db.Model):
     _id = db.Column('id', db.Integer, primary_key=True)
     date = db.Column(db.DateTime(timezone=True), default=datetime.timezone.utc)
+    title = db.Column(db.String(100))
     content = db.Column(db.Text())
     
-    def __init__(self, content, date):
+    def __init__(self, title, content, date):
+        self.title = title
         self.content = content
         self.date = date
