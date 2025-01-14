@@ -1,6 +1,7 @@
 from .extensions import db
 import datetime
 
+# Table for user accounts
 class users(db.Model):
     _id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -11,7 +12,8 @@ class users(db.Model):
         self.name = name
         self.email = email
         self.pw = pw
-        
+
+# Table for blogposts        
 class blogposts(db.Model):
     _id = db.Column('id', db.Integer, primary_key=True)
     date = db.Column(db.DateTime(timezone=True), default=datetime.timezone.utc)

@@ -1,21 +1,22 @@
 from flask import render_template, url_for, request, redirect, session, flash, Blueprint
 import bcrypt
 from .blog import blog_read, blog_write
-from pathlib import Path
+from.account import a_create, a_login
 
-from .extensions import db
 from .models import users
 
 main = Blueprint("main", __name__)
 
+# route to test the server is running
 @main.route('/test')
 def test():
     return '<h1>Test</h1>'
 
+# Home page route
 @main.route('/', methods=['POST', 'GET'])
 @main.route('/home', methods=['POST', 'GET'])
 def home():
-    # IF METHOD POST, WRITE TO db
+    # IF METHOD POST, WRITE new post TO db
     if request.method == 'POST':
         blog_title = request.form['edit_blog_title']
         blog_con = request.form['edit_blog_content']
@@ -25,43 +26,48 @@ def home():
 
     return render_template('index.html', list = list)
 
+# Account creation page route
 @main.route('/create', methods=['POST', 'GET'])
 def create():
     #IF METHOD POST, try to create account
     if request.method == 'POST':
         session.permanent = True
         uname = request.form['nm']
+        if uname == '':
+            flash('Username required!')         
         pw = request.form['pw']
         uemail = request.form['email']
-        name_found = users.query.filter_by(name=uname).first()
-        email_found = users.query.filter_by(email=uemail).first()
-        if name_found:
+        # Check the result of our attempt to create an account, then act accordingly
+        result = a_create(uname, uemail, pw)
+        if result == -2:
+            flash('Invalid username!', 'info')
+            return redirect(url_for('main.create'))
+        if result == -1:
+            flash('Invalid password!', 'info')
+            return redirect(url_for('main.create'))
+        if result == 0:
             flash('Username already in use', 'info')
             return redirect(url_for('main.create'))
-        if email_found:
+        if result == 1:
             flash('Email already in use!', 'info')
             return redirect(url_for('main.create'))
         else:
-            bytes = pw.encode()
-            salt = bcrypt.gensalt()
-            hashed_password = bcrypt.hashpw(bytes, salt)
-            new_usr = users(uname, uemail, hashed_password)
-            db.session.add(new_usr)
-            db.session.commit()
             flash('Account created!')
             return redirect(url_for('main.login'))
     else:
         session['user'] = None
         return render_template('create.html')
-    
+
+# Login page route    
 @main.route('/login', methods=['POST', 'GET'])
 def login():
     #IF METHOD POST, try to login
         if request.method == 'POST':       
             uname = request.form['nm']
             pw = request.form['pw']
-            found_user = users.query.filter_by(name=uname).first()
-            if found_user and bcrypt.checkpw(pw.encode(), found_user.pw):
+            result = a_login(uname, pw)
+            # Depending on result of login attempt, update session or show error message and refresh
+            if result:
                 session.permanent = True
                 session['user'] = uname
                 return redirect(url_for('main.home'))
@@ -71,12 +77,14 @@ def login():
         else:
             session['user'] = None
             return render_template('login.html')
-        
+
+# Funny Joke^tm        
 @main.route('/rickroll')
 def rickroll():
     #Just a funny joke
     return '<style>body{background-image: url("static/rickroll.gif");}</style>'
 
+# Account Logout Route
 @main.route('/logout')
 def logout():
     #If we hit this route, clear session vars

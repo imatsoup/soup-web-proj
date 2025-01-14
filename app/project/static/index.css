@@ -6,8 +6,9 @@
 }
 article{
     background-color: #B1DDF1;
-    border-bottom-right-radius: 10%;  
+    /* border-bottom-right-radius: 10%;   */
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 .blog_title {
     color: black;

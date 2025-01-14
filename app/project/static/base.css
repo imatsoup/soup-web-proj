@@ -1,4 +1,5 @@
 body{
+    font-family: "Roboto","Arial",sans-serif;
     background-color: black;
     color: white;
     flex: 1;
@@ -33,7 +34,10 @@ img{
     width: 100%
 }
 
-
+form{
+    background-color: #B1DDF1;
+    border-radius: 10%;  
+}
 
 /* Sliding background css I saw online that I wanted to save for later */
 /* .container{

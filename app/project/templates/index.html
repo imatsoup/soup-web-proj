@@ -21,15 +21,17 @@ Soup Site || Home Page
     {% endfor %}
 </article>
 
-{%if session.user %}
-{%if session.user == 'admin' %}
+
 <form action="#", method="post">
-    <p><input type="text" name="edit_blog_title" id="" placeholder="Title Goes Here"></p>
-    <p><input type="text" name="edit_blog_content" id="" placeholder="Blog Content goes here"></p>
-    <p><input type="submit" value="edit" class="submit"></p>
+    {%if session.user %}
+    {%if session.user == 'admin' %}
+        <p><input type="text" name="edit_blog_title" id="" placeholder="Title Goes Here"></p>
+        <p><input type="text" name="edit_blog_content" id="" placeholder="Blog Content goes here"></p>
+        <p><input type="submit" value="edit" class="submit"></p>
+    {% endif %}
+    {% endif %}
 </form>
-{% endif %}
-{% endif %}
+
 
 {% with messages = get_flashed_messages() %}
         {% if messages %}
