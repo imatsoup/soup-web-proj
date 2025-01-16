@@ -10,18 +10,102 @@ article{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+.blog_module{
+    align-items: flex-start;
+    background-color: #B1DDF1;
+    border: 0px solid black;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 3px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+
+}
+.blog_button_panel{
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 5px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+}
 .blog_title {
     color: black;
     text-align: left;
     padding-left: 10px;
     padding-bottom: 5px;
     font-size: 24px;
+    word-wrap: break-word;
+    white-space: break-spaces;
 }
 .blog_content {
     background-color: #173644;
     text-align: left;
     padding: 25px;
-    border-bottom-right-radius: 10%;  
+    border-bottom-right-radius: 10%;
+    word-wrap: break-word;
+    white-space: break-spaces;  
+}
+.blog_text_panel{
+    align-self:center;
+    background-color: #173644;
+    border: 1px solid black;
+    border-radius: 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    width: 95%;
+    padding: 10px;
+    padding-bottom:15px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+}
+.edit_blog_form{
+    background-color: #173644;
+}
+.edit_blog_content{
+    color: white;
+    background-color: #10242e;
+    border: 0px solid black;
+    width: 100%;
+    height: 400px;
+    resize: none;
+}
+.edit_blog_title{
+    color: white;
+    background-color: #10242e;
+    border: 0px solid black;
+    width: 50%;
+    resize: none;
+}
+.edit_blog_button{
+    color: white;
+    background-color: #173644;
+    align-self: flex-end;
+    border: 0px solid #173644;
+    border-radius: 3%;
+    width: 10%;
 }
 .submit{
     border: none;

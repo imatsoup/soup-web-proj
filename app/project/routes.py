@@ -92,3 +92,7 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('main.login'))
 
+@main.errorhandler(404)
+def error():
+    return 'Error'
+
