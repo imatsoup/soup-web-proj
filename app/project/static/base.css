@@ -35,7 +35,27 @@ img{
 
 form{
     background-color: #B1DDF1;
-    border-radius: 10%;  
+    border-radius: 3%;  
+}
+
+.toggle{
+    background-color:#B1DDF1;
+    border: 0px solid black;
+}
+
+.highlight:hover{
+    background-color: #bbdeee;
+    color: black;
+    cursor: pointer;
+}
+.highlight{
+    color: white;
+    background-color: #2e5364;
+    align-self: flex-end;
+    border: 0px solid #173644;
+    border-radius: 3%;
+    width: 15%;
+    box-shadow: 2px 2px 5px #888888;
 }
 
 /* Sliding background css I saw online that I wanted to save for later */

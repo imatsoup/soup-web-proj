@@ -9,9 +9,9 @@ Soup Site || Login Page
 
 <h1>Login</h1>
 <form action="#" method="post">
-    <p><input type="text" name="nm" placeholder="Username"></p>
-    <p><input type="password" name="pw" placeholder="Password"></p>
-    <p><input type="submit" value="Submit"></p>
+    <p><input type="text" name="nm" placeholder="Username" required></p>
+    <p><input type="password" name="pw" placeholder="Password" required></p>
+    <p><input type="submit" class="highlight" value="Submit"></p>
     <p><a href="create">New User? Create an Account.</a></p>
 </form>
 {% with messages = get_flashed_messages() %}

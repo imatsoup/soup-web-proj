@@ -88,6 +88,7 @@ article{
     color: white;
     background-color: #10242e;
     border: 0px solid black;
+    border-radius: 3%;
     width: 100%;
     height: 400px;
     resize: none;
@@ -96,17 +97,18 @@ article{
     color: white;
     background-color: #10242e;
     border: 0px solid black;
+    border-radius: 3%;
     width: 50%;
     resize: none;
 }
-.edit_blog_button{
+/* .edit_blog_button{
     color: white;
     background-color: #173644;
     align-self: flex-end;
     border: 0px solid #173644;
     border-radius: 3%;
     width: 10%;
-}
+} */
 .submit{
     border: none;
     color: black;
@@ -118,3 +120,4 @@ article{
     margin: 4px 2px;
     border-radius: 35%;
 }
+

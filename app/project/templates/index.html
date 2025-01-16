@@ -12,8 +12,8 @@ Soup Site || Home Page
 {%if session.user %}
     <p class="center"> Welcome {{session.user}}</p>
     {%if session.user == 'admin' %}
-    <button id="toggle" class="toggle_edit" onclick="toggle_edit()">Post</button>
-    <div class="blog_module" style="display: none;">
+    <button id="toggle" class="highlight" value="Write a New Post" onclick="toggle('toggle', '.blog_module')">Write a New Post</button>
+    <div class="blog_module" id="blog_module" style="display: none;">
         <div class="blog_text_panel">
             <form action="#" method="post" class="edit_blog_form">
             <!-- <div class="blog_button_panel">
@@ -23,7 +23,7 @@ Soup Site || Home Page
             </div> -->
             <textarea name="edit_blog_title" class="edit_blog_title" id="" role="text" placeholder="Title goes here..." required></textarea>
             <textarea name="edit_blog_content" class="edit_blog_content" id="" role="text" placeholder="Content goes here..." required></textarea>
-            <button class="edit_blog_button" onclick="" type="submit">Submit</button>
+            <button class="highlight" onclick="" type="submit">Submit</button>
             </form>
         </div>
     </div>
