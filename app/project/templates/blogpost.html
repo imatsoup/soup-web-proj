@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% block css %} 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+<article class="blog">
+    <h2 class = "blog_title">{{title}}</h2>
+    <p class = "blog_content">{{content}}</p>
+</article>
+<a href="/">back</a>
+{% endblock %}

@@ -6,9 +6,10 @@ Soup Site || Home Page
 {% block css %} 
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
 {% endblock %}
+{% block head %}Home Page{% endblock %}
 {% block content %}
 
-<h1 class="center">Home Page</h1>
+
 {%if session.user %}
     <p class="center"> Welcome {{session.user}}</p>
     {%if session.user == 'admin' %}
@@ -33,7 +34,7 @@ Soup Site || Home Page
 <article class="blog">
     {% for entry in list %}
         <h2 class = "blog_title"> {{ entry.title }} - {{ entry.date.date() }}</h2>
-        <p class = "blog_content"> {{ entry.content }} </p>
+        <p class = "blog_content"><a href="/blogpost/{{ entry.title }}/{{ entry.content }}"> {{ entry.content[:100] + "..." }} </a></p>
     {% endfor %}
 </article>
 

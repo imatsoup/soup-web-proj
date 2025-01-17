@@ -1,3 +1,9 @@
+.center{
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    color: aquamarine;
+}
 body{
     font-family: "Roboto","Arial",sans-serif;
     background-color: black;

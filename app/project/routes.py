@@ -26,6 +26,10 @@ def home():
 
     return render_template('index.html', list = list)
 
+@main.route('/blogpost/<title>/<content>')
+def blogpost(title, content):
+    return render_template('blogpost.html', title=title, content=content)
+
 # Account creation page route
 @main.route('/create', methods=['POST', 'GET'])
 def create():
@@ -93,6 +97,9 @@ def logout():
     return redirect(url_for('main.login'))
 
 @main.errorhandler(404)
-def error():
-    return 'Error'
+def page_not_found():
+    return 'Page Not Found'
 
+@main.errorhandler(500)
+def error():
+    return 'Failed to connect to database'
