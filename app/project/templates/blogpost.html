@@ -3,9 +3,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
+
 <article class="blog">
     <h2 class = "blog_title">{{title}}</h2>
     <p class = "blog_content">{{content}}</p>
+    <a href="/"><img class="graphic-arrow" src="\static\backarrow.png" alt="A clickable arrow pointing backwards with the text 'Back' written on it, indicating that it will take you to the previous page."></a>
 </article>
-<a href="/">back</a>
+
+
 {% endblock %}

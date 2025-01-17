@@ -22,6 +22,11 @@ img{
     height:25px;
     width:25px;
 }
+.graphic-arrow{
+    height:40px; 
+    width:50px; 
+    padding-left: 5px;
+}
 .bg-light {
     background-color: #B1DDF1 !important;
     border-bottom-left-radius: 10%;
